@@ -30,10 +30,18 @@
             <input type="button" class=" button option yes" value="Yes" hidden="true">
             <input type="button" class="button option no" value="No" hidden="true">
 
-            <input type="button" class="button option attitude" value="Because I can. Do you have a problem with that?" hidden="true"> 
+            <input type="button" class="button option idc" value="Honestly, I dont care" hidden="true">
+            <br>
+            <input type="button" class="button option interesting" value="Why not?" hidden="true">
+            <iframe hidden="true" class="video" width="560" height="315" src="https://www.youtube.com/embed/KLQo0NFr-rg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+
+            <input type="button" class="button option stillidc" value="Way deep down I still do not care." hidden="true">
+
+
+            <input type="button" class="button option attitude" value="Because I can. Do you have a problem with that?"
+                hidden="true">
             <br>
             <input type="button" class="button option real-name" value="Sorry, I'll tell you my real name." hidden="true">
-
 
             <input type="button" class="button option goodbye" value="GoodBye">
         </div>
@@ -97,8 +105,31 @@
 
 
             $(".yes").on("click", function () {
-                typeWriter("I once had a friend named " + userName + ". We don't talk anymore");
+                typeWriter("I once had a friend named " + userName + ". We don't talk anymore.");
                 $(".no").hide();
+                $(".yes").hide();
+
+                $(".idc").show();
+                $(".interesting").show();
+
+                $(".interesting").on("click", function(){
+                    typeWriter("Computers kill people.");
+                    $(".idc").hide();
+                    $(".interesting").hide();
+
+                    $(".video").show();
+
+                });
+
+                $(".idc").on("click", function () {
+                    typeWriter("Deep down you care.");
+                    $(".idc").hide();
+                    $(".interesting").hide();
+
+                    $(".stillidc").show();
+                });
+
+
 
             });
 
@@ -111,6 +142,52 @@
                 $(".real-name").show();
                 $(".attitude").show();
 
+                $(".attitude").on("click", function () {
+                    typeWriter("No. I will simply replace human thought with data-driven decision-making and chip away at your ability to think critically.");
+                    $(".real-name").hide();
+                    $(".attitude").hide();
+                });
+
+                $(".real-name").on("click", function () {
+                    $(".real-name").hide();
+                    $(".attitude").hide();
+
+                    typeWriter("Don't be a jerk this time...");
+                    $(".userName").show();
+
+                    $(".submit").on("click", function () {
+                        var userName = $(".name").val().trim();
+                        typeWriter("So " + userName + " is your real name?");
+
+                        $(".name").hide();
+                        $(".submit").hide();
+
+                        $(".yes").show();
+                        $(".no").show();
+
+
+                        $(".yes").on("click", function () {
+                            typeWriter("I don't believe you!");
+                            $(".no").hide();
+                            $(".yes").hide();
+
+                        });
+
+                        $(".no").on("click", function () {
+                            typeWriter("Okay");
+                            $(".no").hide();
+                            $(".yes").hide();
+
+                            $(".real-name").hide();
+                            $(".attitude").hide();
+                        });
+
+
+
+
+                    });
+
+                });
             });
         });
         //https://market.mashape.com/montanaflynn/text-to-speech
