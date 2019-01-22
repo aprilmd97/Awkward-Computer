@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Awkward Computer</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <link href="https://fonts.googleapis.com/css?family=Press+Start+2P" rel="stylesheet">
+</head>
+
+<body>
+
+    <div>
+        <input type="submit" value="Start" class=" button start">
+    </div>
+
+    <div class=" game container" hidden="true">
+
+        <div id="beginning-text"></div>
+        <br>
+
+        <div>
+            <input type="button" class="button option hello" value="Hello">
+
+            <input type="text" class="userName input name" placeholder="Type Your Name Here" hidden="true">
+            <input type="button" class=" button option userName submit" value="Submit Your Name" hidden="true">
+
+            <input type="button" class=" button option yes" value="Yes" hidden="true">
+            <input type="button" class="button option no" value="No" hidden="true">
+
+            <input type="button" class="button option attitude" value="Because I can. Do you have a problem with that?" hidden="true"> 
+            <br>
+            <input type="button" class="button option real-name" value="Sorry, I'll tell you my real name." hidden="true">
+
+
+            <input type="button" class="button option goodbye" value="GoodBye">
+        </div>
+
+        <div class="loader"></div>
+
+    </div>
+
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
+        crossorigin="anonymous"></script>
+    <script src="https://unpkg.com/typewriter-effect/dist/core.js"></script>
+    <script>
+
+
+
+        function typeWriter(a) {
+            var div = document.getElementById("beginning-text");
+
+            var typewriter = new Typewriter(div, {
+                loop: true
+            });
+            typewriter.typeString(a).start().pauseFor(20000);
+        };
+
+
+        $(".start").on("click", function () {
+
+            $(".start").hide();
+            $(".game").show();
+
+            typeWriter("Hello Human");
+
+        });
+
+        $(".goodbye").on("click", function () {
+
+            typeWriter("Okay Bye");
+            $(".hello").hide();
+        });
+
+        $(".hello").on("click", function () {
+            typeWriter("So, What is your name?");
+            $(".hello").hide();
+            $(".goodbye").hide();
+            $(".userName").show();
+
+        });
+
+
+        $(".submit").on("click", function () {
+            var userName = $(".name").val().trim();
+            typeWriter("Oh it's " + userName + "?");
+
+            $(".name").hide();
+            $(".submit").hide();
+
+            $(".yes").show();
+            $(".no").show();
+
+
+            $(".yes").on("click", function () {
+                typeWriter("I once had a friend named " + userName + ". We don't talk anymore");
+                $(".no").hide();
+
+            });
+
+            $(".no").on("click", function () {
+
+                typeWriter("Then why did you type " + userName + " if that isn't your name?");
+                $(".yes").hide();
+                $(".no").hide();
+
+                $(".real-name").show();
+                $(".attitude").show();
+
+            });
+        });
+        //https://market.mashape.com/montanaflynn/text-to-speech
+        // based on the first letter of the user name A-Z determines the users adventure.
+        //inspired by https://codepen.io/gustavoquinalha/pen/gZJXZG?page=1
+
+
+    </script>
+
+</body>
+
+</html>
