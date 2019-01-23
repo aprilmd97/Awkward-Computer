@@ -1,0 +1,24 @@
+{
+  "name": "Awkward-Computer",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "dependencies": {
+    "unirest": "^0.5.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aprilmd97/Awkward-Computer.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aprilmd97/Awkward-Computer/issues"
+  },
+  "homepage": "https://github.com/aprilmd97/Awkward-Computer#readme"
+}

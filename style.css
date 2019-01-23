@@ -71,5 +71,11 @@ p {
     color: white;
   }
 
+  .charm{
+    display: inline;
+    left: 45%;
+    position: absolute;
+  };
+
 
   

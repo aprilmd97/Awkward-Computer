@@ -12,6 +12,9 @@
 
 <body>
 
+    <embed src="sakura tree.wav" autostart="true" loop="true" width="2" height="0" id="audio">
+    </embed>
+
     <div>
         <input type="submit" value="Start" class=" button start">
     </div>
@@ -33,10 +36,14 @@
             <input type="button" class="button option idc" value="Honestly, I dont care" hidden="true">
             <br>
             <input type="button" class="button option interesting" value="Why not?" hidden="true">
-            <iframe hidden="true" class="video" width="560" height="315" src="https://www.youtube.com/embed/KLQo0NFr-rg" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"  allowfullscreen></iframe>
+            <iframe hidden="true" class="video" width="560" height="315" src="https://www.youtube.com/embed/KLQo0NFr-rg"
+                frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+
 
             <input type="button" class="button option stillidc" value="Way deep down I still do not care." hidden="true">
 
+            <input type="button" class="button option mine" value="MINE!" hidden="true">
 
             <input type="button" class="button option attitude" value="Because I can. Do you have a problem with that?"
                 hidden="true">
@@ -58,7 +65,6 @@
     <script>
 
 
-
         function typeWriter(a) {
             var div = document.getElementById("beginning-text");
 
@@ -66,7 +72,13 @@
                 loop: true
             });
             typewriter.typeString(a).start().pauseFor(20000);
+
         };
+
+        $(".button").on("click", function () {
+            var audio = new Audio('BEEP1C.wav');
+            audio.play();
+        });
 
 
         $(".start").on("click", function () {
@@ -75,6 +87,8 @@
             $(".game").show();
 
             typeWriter("Hello Human");
+
+            $("#audio").remove();
 
         });
 
@@ -112,7 +126,7 @@
                 $(".idc").show();
                 $(".interesting").show();
 
-                $(".interesting").on("click", function(){
+                $(".interesting").on("click", function () {
                     typeWriter("Computers kill people.");
                     $(".idc").hide();
                     $(".interesting").hide();
@@ -127,6 +141,17 @@
                     $(".interesting").hide();
 
                     $(".stillidc").show();
+
+                    $(".stillidc").on("click", function(){
+
+                        typeWriter("Is there anyway I could charm you?");
+
+                        $(".charm").show();
+                        $(".charm").fadeIn(2000);
+
+                
+                        
+                    })
                 });
 
 
@@ -182,16 +207,14 @@
                             $(".attitude").hide();
                         });
 
-
-
-
                     });
 
                 });
             });
         });
+
         //https://market.mashape.com/montanaflynn/text-to-speech
-        // based on the first letter of the user name A-Z determines the users adventure.
+        //based on the first letter of the user name A-Z determines the users adventure.
         //inspired by https://codepen.io/gustavoquinalha/pen/gZJXZG?page=1
 
 
